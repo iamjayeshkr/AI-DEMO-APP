@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import TopNavbar from "@/components/TopNavbar";
 import { AuthProvider } from "@/context/AuthContext";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    { path: "./fonts/Inter-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Inter-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Inter-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/Inter-Bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/Inter-ExtraBold.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
 });
 
 export const metadata: Metadata = {
