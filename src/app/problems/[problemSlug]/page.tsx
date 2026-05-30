@@ -485,7 +485,7 @@ export default function ProblemSolver() {
               <div className="flex items-center gap-3">
                 <Link
                   href="/problems"
-                  className="p-1.5 rounded-lg border border-border-main text-muted-main hover:text-dark hover:bg-bg-main transition-all"
+                  className="p-1.5 rounded-lg border border-border-main text-muted-main hover:text-dark hover:bg-white transition-all"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </Link>
@@ -601,7 +601,7 @@ export default function ProblemSolver() {
                     <div className="flex flex-col gap-3 mt-2 shrink-0">
                       <h4 className="font-bold text-xs text-dark">Visible Examples</h4>
                       {problem.testCases.slice(0, 2).map((tc, idx) => (
-                        <div key={tc.id} className="bg-bg-main border border-border-main/50 p-3 rounded-xl flex flex-col gap-1 font-mono text-[10px] text-muted-main">
+                        <div key={tc.id} className="bg-white border border-border-main/50 p-3 rounded-xl flex flex-col gap-1 font-mono text-[10px] text-muted-main">
                           <span className="font-bold text-dark text-[9px] mb-1">Example #{idx + 1}</span>
                           <span><strong>Input Parameters:</strong> {tc.input}</span>
                           <span><strong>Expected Output:</strong> {tc.expectedOutput}</span>
@@ -667,7 +667,7 @@ export default function ProblemSolver() {
                     </div>
 
                     {/* Chat Input Composer */}
-                    <div className="shrink-0 flex items-center gap-2 border border-border-main rounded-xl p-1 bg-bg-main/30">
+                    <div className="shrink-0 flex items-center gap-2 border border-border-main rounded-xl p-1 bg-white/30">
                       <input
                         type="text"
                         value={inputValue}
@@ -699,14 +699,14 @@ export default function ProblemSolver() {
                 style={{ width: `${98 - leftWidth}%` }}
               >
                 {/* TOP HALF: Monaco Code Editor Panel */}
-                <div className="flex-[3] min-h-[300px] bg-slate-900 border border-slate-800 rounded-xl flex flex-col overflow-hidden">
+                <div className="flex-[3] min-h-[300px] bg-white border border-border-main rounded-xl flex flex-col overflow-hidden shadow-sm">
                   {/* Editor control header */}
-                  <div className="bg-slate-950 px-4 py-2 border-b border-slate-800 flex items-center justify-between text-[10px] text-slate-400 select-none shrink-0">
+                  <div className="bg-white px-4 py-2 border-b border-border-main flex items-center justify-between text-[10px] text-muted-main select-none shrink-0">
                     <span className="flex items-center gap-1">
                       <Terminal className="h-3.5 w-3.5 text-primary" />
-                      <span>Workspace Compiler</span>
+                      <span className="font-semibold text-dark">Workspace Compiler</span>
                     </span>
-                    <span>{selectedLanguage === "cpp" ? "GCC 13 WASM" : selectedLanguage === "java" ? "OpenJDK 21 WASM" : "WASM Engine"}</span>
+                    <span className="font-medium">{selectedLanguage === "cpp" ? "GCC 13 WASM" : selectedLanguage === "java" ? "OpenJDK 21 WASM" : "WASM Engine"}</span>
                   </div>
 
                   {/* Monaco Editor Frame */}
@@ -740,7 +740,7 @@ export default function ProblemSolver() {
                   </div>
 
                   {/* Editor Actions Bottom Bar */}
-                  <div className="bg-slate-950 p-3 border-t border-slate-800 flex items-center justify-between select-none shrink-0">
+                  <div className="bg-white p-3 border-t border-border-main flex items-center justify-between select-none shrink-0">
                     <button
                       onClick={() => {
                         if (confirm("Resetting code will clear your current progress. Continue?")) {
@@ -749,7 +749,7 @@ export default function ProblemSolver() {
                           setSelectedLanguage(prev => prev);
                         }
                       }}
-                      className="px-4 py-2 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1"
+                      className="px-4 py-2 border border-border-main hover:border-dark/30 text-muted-main hover:text-dark text-xs font-semibold rounded-lg transition-colors flex items-center gap-1 bg-white"
                     >
                       <RotateCcw className="h-3.5 w-3.5" />
                       <span>Reset</span>
@@ -758,14 +758,14 @@ export default function ProblemSolver() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={runCodeSandbox}
-                        className="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg shadow transition-all flex items-center gap-1.5"
+                        className="px-5 py-2 bg-white hover:bg-slate-50 border border-border-main text-dark text-xs font-bold rounded-lg shadow-sm transition-all flex items-center gap-1.5"
                       >
-                        <Play className="h-3.5 w-3.5 fill-current" />
+                        <Play className="h-3.5 w-3.5 fill-current text-primary" />
                         <span>Run Code</span>
                       </button>
                       <button
                         onClick={runCodeSandbox}
-                        className="px-6 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-extrabold rounded-lg shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5 animate-pulse"
+                        className="px-6 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-extrabold rounded-lg shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-1.5"
                       >
                         <CheckCircle className="h-3.5 w-3.5" />
                         <span>Submit Solution</span>
@@ -811,7 +811,7 @@ export default function ProblemSolver() {
                           {problem.testCases.slice(0, 3).map((tc, idx) => (
                             <div
                               key={tc.id}
-                              className="p-3 border border-border-main bg-bg-main/50 rounded-xl flex flex-col gap-1.5 font-mono text-[10px]"
+                              className="p-3 border border-border-main bg-white/50 rounded-xl flex flex-col gap-1.5 font-mono text-[10px]"
                             >
                               <span className="font-bold text-[9px] text-dark">Case #{idx + 1}</span>
                               <span className="truncate"><strong>Input:</strong> {tc.input}</span>
