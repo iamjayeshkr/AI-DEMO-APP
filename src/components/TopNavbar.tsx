@@ -136,7 +136,7 @@ export default function TopNavbar() {
               {user ? (
                 <>
                   {/* AI Mentor glowing icon */}
-                  <Link href="/problems" className="relative group p-2 rounded-lg hover:bg-black/5 transition-colors">
+                  <Link href="/problems" className="relative group p-2 rounded-lg hover:bg-black/5 transition-colors" title="AI Mentor">
                     <div className="absolute inset-0 bg-primary/20 rounded-lg scale-0 group-hover:scale-100 group-hover:animate-ping opacity-60 transition-transform duration-300" />
                     <Sparkles className="h-5 w-5 text-primary animate-pulse" />
                   </Link>

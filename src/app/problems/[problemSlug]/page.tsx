@@ -193,18 +193,32 @@ export default function ProblemSolver() {
   }
 
   // Pre-load default AI Mentor message
-  const triggerAiWelcome = () => {
+  const triggerAiWelcome = async () => {
     if (chatMessages.length === 0 && problem) {
       setIsTyping(true);
-      setTimeout(() => {
-        setChatMessages([
-          {
-            sender: "ai",
-            text: `Hello Rudra! I am your AI Mentor. I have complete analytical knowledge about **${problem.title}**.\n\nStuck on time complexity or syntax? Click **"Get Hint"** or type a query, and I'll guide you step-by-step without spoiling the final solution!`
-          }
-        ]);
+      try {
+        const res = await fetch("/api/mentor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [{ sender: "user", text: `Introduce yourself briefly and tell me what you know about the "${problem.title}" problem. Keep it under 60 words, friendly and encouraging.` }],
+            problem: {
+              title: problem.title,
+              difficulty: problem.difficulty,
+              tags: [problem.category],
+              description: problem.description,
+            },
+            code: "",
+            language: selectedLanguage,
+          }),
+        });
+        const data = await res.json();
+        setChatMessages([{ sender: "ai", text: data.reply || `Hi! I'm your AI Mentor. Ready to help you crack **${problem.title}**. Ask me for hints or explanations!` }]);
+      } catch {
+        setChatMessages([{ sender: "ai", text: `Hi! I'm your AI Mentor. Ready to help you crack **${problem.title}**. Ask me for hints or explanations!` }]);
+      } finally {
         setIsTyping(false);
-      }, 400);
+      }
     }
   };
 
@@ -352,24 +366,40 @@ export default function ProblemSolver() {
   };
 
   // AI Chat Hints triggers
-  const sendAiHint = (query?: string) => {
+  const sendAiHint = async (query?: string) => {
     if (!problem) return;
-    const text = query || "Give me a dynamic, conceptual hint regarding indices boundaries.";
-    setChatMessages(prev => [...prev, { sender: "user", text }]);
+    const text = query || "Give me a conceptual hint for this problem without spoiling the solution.";
+    const updatedMessages = [...chatMessages, { sender: "user" as const, text }];
+    setChatMessages(updatedMessages);
     setInputValue("");
     setIsTyping(true);
     setActiveLeftTab("ai");
 
-    setTimeout(() => {
-      let aiResponse = "";
-      if (text.toLowerCase().includes("hint")) {
-        aiResponse = `**AI Hint:** Have you considered a **Two-Pointer** approach? Or a **Hash Map** key-check?\n\nIf you use a Hash Map, you can store each value's index as you iterate. When you visit a number, check if its complement \`(target - current)\` already exists in the map. This keeps your runtime complexity strictly at **O(N)** instead of O(N²)!`;
-      } else {
-        aiResponse = `For **${problem.title}**, make sure you account for edge cases where the input list contains duplicate values or negative integers. Try writing dry-runs of the indices checks inside your console!`;
-      }
+    try {
+      const res = await fetch("/api/mentor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: updatedMessages,
+          problem: {
+            title: problem.title,
+            difficulty: problem.difficulty,
+            tags: [problem.category],
+            description: problem.description,
+          },
+          code: editorCode,
+          language: selectedLanguage,
+        }),
+      });
+
+      const data = await res.json();
+      const aiResponse = data.reply || "Sorry, I couldn't generate a response right now.";
       setChatMessages(prev => [...prev, { sender: "ai", text: aiResponse }]);
+    } catch {
+      setChatMessages(prev => [...prev, { sender: "ai", text: "⚠️ Couldn't reach AI Mentor. Check your internet connection or API key." }]);
+    } finally {
       setIsTyping(false);
-    }, 1200);
+    }
   };
 
   // Drag Resizer handlers
