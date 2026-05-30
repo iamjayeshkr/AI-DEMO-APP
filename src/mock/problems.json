@@ -1,0 +1,2418 @@
+[
+  {
+    "id": "prob-dynamic-routing",
+    "title": "Build a Next.js Dynamic Segment Router",
+    "slug": "nextjs-dynamic-routing",
+    "difficulty": "Easy",
+    "category": "Next.js Routing",
+    "points": 50,
+    "solvedCount": 1240,
+    "upvotes": 142,
+    "downvotes": 3,
+    "userStatus": "solved",
+    "description": "In Next.js App Router, dynamic segments allow routing to URLs containing dynamic variables. Write a dynamic path resolver function that processes dynamic segments.\n\n### Requirements\nGiven a route template (e.g., `/shop/[category]/[item]`) and a request path (e.g., `/shop/shoes/nike-air`), return an object containing the parsed query parameters.\n\n* E.g., `resolveSegments('/shop/[category]/[item]', '/shop/shoes/nike-air')` should return:\n```json\n{\n  \"category\": \"shoes\",\n  \"item\": \"nike-air\"\n}\n```",
+    "starterCode": "function resolveSegments(template, path) {\n  // Write your code here\n  return {};\n}",
+    "solutionCode": "function resolveSegments(template, path) {\n  const templateParts = template.split('/').filter(Boolean);\n  const pathParts = path.split('/').filter(Boolean);\n  const params = {};\n  \n  if (templateParts.length !== pathParts.length) return null;\n  \n  for (let i = 0; i < templateParts.length; i++) {\n    const tPart = templateParts[i];\n    const pPart = pathParts[i];\n    \n    if (tPart.startsWith('[') && tPart.endsWith(']')) {\n      const key = tPart.slice(1, -1);\n      params[key] = pPart;\n    } else if (tPart !== pPart) {\n      return null; // Route mismatch\n    }\n  }\n  \n  return params;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "['/shop/[category]/[item]', '/shop/shoes/nike-air']",
+        "expectedOutput": "{\"category\":\"shoes\",\"item\":\"nike-air\"}"
+      },
+      {
+        "id": "tc2",
+        "input": "['/blog/[id]/comments/[commentId]', '/blog/102/comments/45']",
+        "expectedOutput": "{\"id\":\"102\",\"commentId\":\"45\"}"
+      }
+    ]
+  },
+  {
+    "id": "prob-nextjs-server-actions",
+    "title": "Next.js 14 Server Action Validation",
+    "slug": "nextjs-server-actions",
+    "difficulty": "Medium",
+    "category": "Next.js Routing",
+    "points": 100,
+    "solvedCount": 670,
+    "upvotes": 88,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Implement a Next.js Server Action form handler `handleSubmit(formData)` that validates inputs on the server and returns a status result.\n\n### Requirements\n1. Extract `email` and `username` from `formData` (a standard JavaScript FormData interface representation).\n2. If `email` does not contain `@`, return `{ success: false, error: 'Invalid email' }`.\n3. If `username` is shorter than 4 characters, return `{ success: false, error: 'Username too short' }`.\n4. If both are valid, return `{ success: true, user: { email, username } }`.",
+    "starterCode": "async function handleSubmit(formData) {\n  // Write your code here\n  return {};\n}",
+    "solutionCode": "async function handleSubmit(formData) {\n  const email = formData.get('email');\n  const username = formData.get('username');\n  \n  if (!email || !email.includes('@')) {\n    return { success: false, error: 'Invalid email' };\n  }\n  if (!username || username.length < 4) {\n    return { success: false, error: 'Username too short' };\n  }\n  return { success: true, user: { email, username } };\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "new Map([['email', 'rudra@thinkera.io'], ['username', 'rudra']])",
+        "expectedOutput": "{\"success\":true,\"user\":{\"email\":\"rudra@thinkera.io\",\"username\":\"rudra\"}}"
+      },
+      {
+        "id": "tc2",
+        "input": "new Map([['email', 'rudra.io'], ['username', 'rudra']])",
+        "expectedOutput": "{\"success\":false,\"error\":\"Invalid email\"}"
+      }
+    ]
+  },
+  {
+    "id": "prob-framer-motion-variants",
+    "title": "Framer Motion Staggered Variants",
+    "slug": "framer-motion-fade-in-up",
+    "difficulty": "Medium",
+    "category": "Animations",
+    "points": 100,
+    "solvedCount": 820,
+    "upvotes": 95,
+    "downvotes": 1,
+    "userStatus": "attempted",
+    "description": "Create a clean reusable animation config object for a list container and its child items using **Framer Motion Variants** to achieve a staggered fade-in-up visual.\n\n### Requirements\nYour config should define `containerVariants` and `itemVariants` that:\n- Container starts hidden, then animates to visible.\n- Staggers children by `0.15` seconds.\n- Items fade in (opacity `0` to `1`) and slide up (initial `y: 20` to `0`).\n\nReturn the configuration object containing both variants.",
+    "starterCode": "const staggerListVariants = {\n  container: {\n    // Container variants\n  },\n  item: {\n    // Item variants\n  }\n};",
+    "solutionCode": "const staggerListVariants = {\n  container: {\n    hidden: { opacity: 0 },\n    visible: {\n      opacity: 1,\n      transition: {\n        staggerChildren: 0.15\n      }\n    }\n  },\n  item: {\n    hidden: { opacity: 0, y: 20 },\n    visible: {\n      opacity: 1,\n      y: 0,\n      transition: {\n        type: 'spring',\n        stiffness: 100\n      }\n    }\n  }\n};",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "staggerListVariants.container.visible.transition.staggerChildren",
+        "expectedOutput": "0.15"
+      },
+      {
+        "id": "tc2",
+        "input": "staggerListVariants.item.hidden.y",
+        "expectedOutput": "20"
+      }
+    ]
+  },
+  {
+    "id": "prob-framer-drag-physics",
+    "title": "Framer Motion Spring Drag Physics",
+    "slug": "framer-drag-physics",
+    "difficulty": "Hard",
+    "category": "Animations",
+    "points": 150,
+    "solvedCount": 420,
+    "upvotes": 76,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Design a premium interactive **Framer Motion drag physics** configuration object that implements constrained bounding drag fields with high-fidelity spring elastic values.\n\n### Requirements\nDefine a configuration object `dragConfig` containing:\n- `drag`: set to `true` (enables drag in all directions).\n- `dragConstraints`: bounding boxes with `top: -100, bottom: 100, left: -200, right: 200`.\n- `dragElastic`: elastic rebound resistance of `0.2`.\n- `dragTransition`: spring physical parameters with `bounceStiffness: 600` and `bounceDamping: 15`.",
+    "starterCode": "const dragConfig = {\n  // Write drag configurations here\n};",
+    "solutionCode": "const dragConfig = {\n  drag: true,\n  dragConstraints: { top: -100, bottom: 100, left: -200, right: 200 },\n  dragElastic: 0.2,\n  dragTransition: { bounceStiffness: 600, bounceDamping: 15 }\n};",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "dragConfig.dragConstraints.left",
+        "expectedOutput": "-200"
+      },
+      {
+        "id": "tc2",
+        "input": "dragConfig.dragTransition.bounceStiffness",
+        "expectedOutput": "600"
+      }
+    ]
+  },
+  {
+    "id": "prob-postgres-optimistic-lock",
+    "title": "Optimistic Locking Query in PostgreSQL",
+    "slug": "postgres-optimistic-locking",
+    "difficulty": "Hard",
+    "category": "Database",
+    "points": 150,
+    "solvedCount": 310,
+    "upvotes": 78,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Write a PostgreSQL update query implementing **Optimistic Locking** to prevent race conditions during student streak updates. \n\n### Requirements\nGiven a table `users` with columns `id`, `streak_count`, `last_active`, and `version` (integer index tracking changes):\n1. Increment `streak_count` by 1.\n2. Update `last_active` to current timestamp.\n3. Increment `version` by 1.\n4. Ensure the update only occurs if the version matches the local cached version (e.g., version = `4`).\n\nReturn a parameterized string for the raw SQL statement.",
+    "starterCode": "const updateStreakSQL = `\n  -- Write your SQL query here\n`;",
+    "solutionCode": "const updateStreakSQL = `\n  UPDATE users\n  SET streak_count = streak_count + 1,\n      last_active = NOW(),\n      version = version + 1\n  WHERE id = $1 AND version = $2\n  RETURNING streak_count, version;\n`;",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "updateStreakSQL.includes('SET version = version + 1')",
+        "expectedOutput": "true"
+      },
+      {
+        "id": "tc2",
+        "input": "updateStreakSQL.includes('WHERE id = $1 AND version = $2')",
+        "expectedOutput": "true"
+      }
+    ]
+  },
+  {
+    "id": "prob-postgres-recursive-cte",
+    "title": "SQL Hierarchical Recursive CTE",
+    "slug": "postgres-recursive-cte",
+    "difficulty": "Hard",
+    "category": "Database",
+    "points": 150,
+    "solvedCount": 240,
+    "upvotes": 65,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Write a recursive Common Table Expression (CTE) query to traverse a hierarchical employee organization structure from a database table `employees`.\n\n### Requirements\nGiven `employees` with columns `id`, `name`, `manager_id`:\n1. Identify the top CEO (where `manager_id IS NULL`).\n2. Recursively join child nodes (reporting employees).\n3. Keep track of the hierarchy level depth (starting at `1`).\n4. Order results by hierarchy level.\n\nReturn the raw SQL statement.",
+    "starterCode": "const orgStructureSQL = `\n  -- Write your SQL recursive query here\n`;",
+    "solutionCode": "const orgStructureSQL = `\n  WITH RECURSIVE org_tree AS (\n    SELECT id, name, manager_id, 1 as level\n    FROM employees\n    WHERE manager_id IS NULL\n    UNION ALL\n    SELECT e.id, e.name, e.manager_id, ot.level + 1\n    FROM employees e\n    INNER JOIN org_tree ot ON e.manager_id = ot.id\n  )\n  SELECT * FROM org_tree ORDER BY level;\n`;",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "orgStructureSQL.includes('WITH RECURSIVE')",
+        "expectedOutput": "true"
+      },
+      {
+        "id": "tc2",
+        "input": "orgStructureSQL.includes('UNION ALL')",
+        "expectedOutput": "true"
+      }
+    ]
+  },
+  {
+    "id": "prob-gemini-structured-json",
+    "title": "Gemini API Structured Schema Enforcement",
+    "slug": "gemini-structured-json",
+    "difficulty": "Medium",
+    "category": "Integrating Gemini API & LLM Agents",
+    "points": 100,
+    "solvedCount": 540,
+    "upvotes": 72,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Configure the Gemini API options object to enforce a strict **Structured JSON Output** matching a specific user schema.\n\n### Requirements\nCreate a config object `geminiConfig` that:\n- Sets `responseMimeType` to `\"application/json\"`.\n- Sets `responseSchema` defining an object with properties:\n  - `name`: of type `\"STRING\"`.\n  - `age`: of type `\"INTEGER\"`.\n  - `skills`: of type `\"ARRAY\"` containing `\"STRING\"` items.\n  - Marks all three fields (`name`, `age`, `skills`) as required fields.",
+    "starterCode": "const geminiConfig = {\n  // Write config configurations here\n};",
+    "solutionCode": "const geminiConfig = {\n  responseMimeType: 'application/json',\n  responseSchema: {\n    type: 'OBJECT',\n    properties: {\n      name: { type: 'STRING' },\n      age: { type: 'INTEGER' },\n      skills: { type: 'ARRAY', items: { type: 'STRING' } }\n    },\n    required: ['name', 'age', 'skills']\n  }\n};",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "geminiConfig.responseMimeType",
+        "expectedOutput": "\"application/json\""
+      },
+      {
+        "id": "tc2",
+        "input": "geminiConfig.responseSchema.required.join(',')",
+        "expectedOutput": "\"name,age,skills\""
+      }
+    ]
+  },
+  {
+    "id": "prob-gemini-agent-calling",
+    "title": "LLM Function Call Tool Invocation",
+    "slug": "gemini-agent-calling",
+    "difficulty": "Hard",
+    "category": "Integrating Gemini API & LLM Agents",
+    "points": 150,
+    "solvedCount": 380,
+    "upvotes": 82,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Write a function `parseToolCall(geminiPayload, localTools)` that dynamically processes a Gemini API tool calling tool response.\n\n### Requirements\nGiven `geminiPayload` containing:\n```json\n{\n  \"functionCall\": {\n    \"name\": \"calculateStreak\",\n    \"args\": { \"userId\": 102 }\n  }\n}\n```\nAnd `localTools` (a lookup object containing local JS functions like `{ calculateStreak: (args) => { return args.userId + '-streak'; } }`):\n\nExtract the function name, assert that it exists in `localTools`, execute it passing its arguments, and return the result.\n- If the function doesn't exist, return `\"Invalid tool call\"`.",
+    "starterCode": "function parseToolCall(geminiPayload, localTools) {\n  // Write your code here\n  return null;\n}",
+    "solutionCode": "function parseToolCall(geminiPayload, localTools) {\n  const call = geminiPayload.functionCall;\n  if (!call || !call.name) return 'Invalid tool call';\n  \n  const func = localTools[call.name];\n  if (typeof func !== 'function') {\n    return 'Invalid tool call';\n  }\n  return func(call.args);\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "[{ functionCall: { name: 'addStreak', args: { count: 14 } } }, { addStreak: (args) => args.count + 1 }]",
+        "expectedOutput": "15"
+      },
+      {
+        "id": "tc2",
+        "input": "[{ functionCall: { name: 'unknown', args: {} } }, {}]",
+        "expectedOutput": "\"Invalid tool call\""
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-1",
+    "title": "Two Sum",
+    "slug": "dsa-two-sum",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 150,
+    "upvotes": 40,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Two Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Two Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-2",
+    "title": "Valid Parentheses",
+    "slug": "dsa-valid-parentheses",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 162,
+    "upvotes": 43,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Valid Parentheses**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Valid Parentheses** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-3",
+    "title": "Merge Two Sorted Lists",
+    "slug": "dsa-merge-two-sorted-lists",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 174,
+    "upvotes": 46,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Merge Two Sorted Lists**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Merge Two Sorted Lists** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-4",
+    "title": "Maximum Subarray (Kadane's)",
+    "slug": "dsa-maximum-subarray-kadane-s-",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 186,
+    "upvotes": 49,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Maximum Subarray (Kadane's)**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Maximum Subarray (Kadane's)** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-5",
+    "title": "Binary Tree Inorder Traversal",
+    "slug": "dsa-binary-tree-inorder-traversal",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 198,
+    "upvotes": 52,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Binary Tree Inorder Traversal**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Binary Tree Inorder Traversal** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-6",
+    "title": "Longest Substring Without Repeating Characters",
+    "slug": "dsa-longest-substring-without-repeating-characters",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 210,
+    "upvotes": 55,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Longest Substring Without Repeating Characters**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Longest Substring Without Repeating Characters** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-7",
+    "title": "Container With Most Water",
+    "slug": "dsa-container-with-most-water",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 222,
+    "upvotes": 58,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Container With Most Water**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Container With Most Water** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-8",
+    "title": "3Sum",
+    "slug": "dsa-3sum",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 234,
+    "upvotes": 61,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **3Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **3Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-9",
+    "title": "Remove Nth Node From End of List",
+    "slug": "dsa-remove-nth-node-from-end-of-list",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 246,
+    "upvotes": 64,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Remove Nth Node From End of List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Remove Nth Node From End of List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-10",
+    "title": "Merge k Sorted Lists",
+    "slug": "dsa-merge-k-sorted-lists",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 258,
+    "upvotes": 67,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Merge k Sorted Lists**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Merge k Sorted Lists** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-11",
+    "title": "Search in Rotated Sorted Array",
+    "slug": "dsa-search-in-rotated-sorted-array",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 270,
+    "upvotes": 70,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Search in Rotated Sorted Array**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Search in Rotated Sorted Array** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-12",
+    "title": "Find First and Last Position of Element in Sorted Array",
+    "slug": "dsa-find-first-and-last-position-of-element-in-sorted-array",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 282,
+    "upvotes": 73,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Find First and Last Position of Element in Sorted Array**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Find First and Last Position of Element in Sorted Array** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-13",
+    "title": "Valid Sudoku",
+    "slug": "dsa-valid-sudoku",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 294,
+    "upvotes": 76,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Valid Sudoku**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Valid Sudoku** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-14",
+    "title": "Combination Sum",
+    "slug": "dsa-combination-sum",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 306,
+    "upvotes": 79,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Combination Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Combination Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-15",
+    "title": "Group Anagrams",
+    "slug": "dsa-group-anagrams",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 318,
+    "upvotes": 82,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Group Anagrams**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Group Anagrams** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-16",
+    "title": "Climbing Stairs",
+    "slug": "dsa-climbing-stairs",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 330,
+    "upvotes": 85,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Climbing Stairs**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Climbing Stairs** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-17",
+    "title": "Merge Intervals",
+    "slug": "dsa-merge-intervals",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 342,
+    "upvotes": 88,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Merge Intervals**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Merge Intervals** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-18",
+    "title": "Insert Interval",
+    "slug": "dsa-insert-interval",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 354,
+    "upvotes": 91,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Insert Interval**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Insert Interval** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-19",
+    "title": "Unique Paths",
+    "slug": "dsa-unique-paths",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 366,
+    "upvotes": 94,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Unique Paths**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Unique Paths** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-20",
+    "title": "Minimum Path Sum",
+    "slug": "dsa-minimum-path-sum",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 378,
+    "upvotes": 97,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Minimum Path Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Minimum Path Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-21",
+    "title": "Set Matrix Zeroes",
+    "slug": "dsa-set-matrix-zeroes",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 390,
+    "upvotes": 100,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Set Matrix Zeroes**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Set Matrix Zeroes** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-22",
+    "title": "Search a 2D Matrix",
+    "slug": "dsa-search-a-2d-matrix",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 402,
+    "upvotes": 103,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Search a 2D Matrix**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Search a 2D Matrix** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-23",
+    "title": "Sort Colors",
+    "slug": "dsa-sort-colors",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 414,
+    "upvotes": 106,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Sort Colors**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Sort Colors** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-24",
+    "title": "Subsets",
+    "slug": "dsa-subsets",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 426,
+    "upvotes": 109,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Subsets**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Subsets** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-25",
+    "title": "Word Search",
+    "slug": "dsa-word-search",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 438,
+    "upvotes": 112,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Word Search**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Word Search** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-26",
+    "title": "Largest Rectangle in Histogram",
+    "slug": "dsa-largest-rectangle-in-histogram",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 450,
+    "upvotes": 115,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Largest Rectangle in Histogram**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Largest Rectangle in Histogram** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-27",
+    "title": "Maximal Rectangle",
+    "slug": "dsa-maximal-rectangle",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 462,
+    "upvotes": 118,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Maximal Rectangle**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Maximal Rectangle** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-28",
+    "title": "Binary Tree Level Order Traversal",
+    "slug": "dsa-binary-tree-level-order-traversal",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 474,
+    "upvotes": 121,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Binary Tree Level Order Traversal**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Binary Tree Level Order Traversal** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-29",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+    "slug": "dsa-construct-binary-tree-from-preorder-and-inorder-traversal",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 486,
+    "upvotes": 124,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Construct Binary Tree from Preorder and Inorder Traversal**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Construct Binary Tree from Preorder and Inorder Traversal** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-30",
+    "title": "Symmetric Tree",
+    "slug": "dsa-symmetric-tree",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 498,
+    "upvotes": 127,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Symmetric Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Symmetric Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-31",
+    "title": "Path Sum",
+    "slug": "dsa-path-sum",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 510,
+    "upvotes": 130,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Path Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Path Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-32",
+    "title": "Flatten Binary Tree to Linked List",
+    "slug": "dsa-flatten-binary-tree-to-linked-list",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 522,
+    "upvotes": 133,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Flatten Binary Tree to Linked List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Flatten Binary Tree to Linked List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-33",
+    "title": "Best Time to Buy and Sell Stock",
+    "slug": "dsa-best-time-to-buy-and-sell-stock",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 534,
+    "upvotes": 136,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Best Time to Buy and Sell Stock**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Best Time to Buy and Sell Stock** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-34",
+    "title": "Word Ladder",
+    "slug": "dsa-word-ladder",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 546,
+    "upvotes": 139,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Word Ladder**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Word Ladder** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-35",
+    "title": "Single Number",
+    "slug": "dsa-single-number",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 558,
+    "upvotes": 142,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Single Number**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Single Number** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-36",
+    "title": "Copy List with Random Pointer",
+    "slug": "dsa-copy-list-with-random-pointer",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 570,
+    "upvotes": 145,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Copy List with Random Pointer**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Copy List with Random Pointer** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-37",
+    "title": "Linked List Cycle",
+    "slug": "dsa-linked-list-cycle",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 582,
+    "upvotes": 148,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Linked List Cycle**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Linked List Cycle** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-38",
+    "title": "LRU Cache",
+    "slug": "dsa-lru-cache",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 594,
+    "upvotes": 151,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **LRU Cache**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **LRU Cache** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-39",
+    "title": "Sort List",
+    "slug": "dsa-sort-list",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 606,
+    "upvotes": 154,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Sort List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Sort List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-40",
+    "title": "Maximum Product Subarray",
+    "slug": "dsa-maximum-product-subarray",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 618,
+    "upvotes": 157,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Maximum Product Subarray**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Maximum Product Subarray** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-41",
+    "title": "Find Minimum in Rotated Sorted Array",
+    "slug": "dsa-find-minimum-in-rotated-sorted-array",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 630,
+    "upvotes": 160,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Find Minimum in Rotated Sorted Array**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Find Minimum in Rotated Sorted Array** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-42",
+    "title": "Min Stack",
+    "slug": "dsa-min-stack",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 642,
+    "upvotes": 163,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Min Stack**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Min Stack** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-43",
+    "title": "Intersection of Two Linked Lists",
+    "slug": "dsa-intersection-of-two-linked-lists",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 654,
+    "upvotes": 166,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Intersection of Two Linked Lists**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Intersection of Two Linked Lists** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-44",
+    "title": "Majority Element",
+    "slug": "dsa-majority-element",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 666,
+    "upvotes": 169,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Majority Element**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Majority Element** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-45",
+    "title": "Excel Sheet Column Title",
+    "slug": "dsa-excel-sheet-column-title",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 678,
+    "upvotes": 172,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Excel Sheet Column Title**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Excel Sheet Column Title** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-46",
+    "title": "Binary Search",
+    "slug": "dsa-binary-search",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 690,
+    "upvotes": 175,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Binary Search**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Binary Search** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-47",
+    "title": "Reverse Bits",
+    "slug": "dsa-reverse-bits",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 702,
+    "upvotes": 178,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Reverse Bits**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Reverse Bits** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-48",
+    "title": "Number of 1 Bits",
+    "slug": "dsa-number-of-1-bits",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 714,
+    "upvotes": 181,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Number of 1 Bits**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Number of 1 Bits** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-49",
+    "title": "House Robber",
+    "slug": "dsa-house-robber",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 726,
+    "upvotes": 184,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **House Robber**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **House Robber** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-50",
+    "title": "Number of Islands",
+    "slug": "dsa-number-of-islands",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 738,
+    "upvotes": 187,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Number of Islands**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Number of Islands** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-51",
+    "title": "Reverse Linked List",
+    "slug": "dsa-reverse-linked-list",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 750,
+    "upvotes": 190,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Reverse Linked List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Reverse Linked List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-52",
+    "title": "Course Schedule",
+    "slug": "dsa-course-schedule",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 762,
+    "upvotes": 193,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Course Schedule**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Course Schedule** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-53",
+    "title": "Implement Trie (Prefix Tree)",
+    "slug": "dsa-implement-trie-prefix-tree-",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 774,
+    "upvotes": 196,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Implement Trie (Prefix Tree)**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Implement Trie (Prefix Tree)** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-54",
+    "title": "Design Add and Search Words Data Structure",
+    "slug": "dsa-design-add-and-search-words-data-structure",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 786,
+    "upvotes": 199,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Design Add and Search Words Data Structure**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Design Add and Search Words Data Structure** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-55",
+    "title": "Word Search II",
+    "slug": "dsa-word-search-ii",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 798,
+    "upvotes": 202,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Word Search II**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Word Search II** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-56",
+    "title": "House Robber II",
+    "slug": "dsa-house-robber-ii",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 810,
+    "upvotes": 205,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **House Robber II**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **House Robber II** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-57",
+    "title": "Kth Largest Element in an Array",
+    "slug": "dsa-kth-largest-element-in-an-array",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 822,
+    "upvotes": 208,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Kth Largest Element in an Array**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Kth Largest Element in an Array** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-58",
+    "title": "Basic Calculator",
+    "slug": "dsa-basic-calculator",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 834,
+    "upvotes": 211,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Basic Calculator**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Basic Calculator** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-59",
+    "title": "Invert Binary Tree",
+    "slug": "dsa-invert-binary-tree",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 846,
+    "upvotes": 214,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Invert Binary Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Invert Binary Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-60",
+    "title": "Kth Smallest Element in a BST",
+    "slug": "dsa-kth-smallest-element-in-a-bst",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 858,
+    "upvotes": 217,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Kth Smallest Element in a BST**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Kth Smallest Element in a BST** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-61",
+    "title": "Lowest Common Ancestor of a Binary Tree",
+    "slug": "dsa-lowest-common-ancestor-of-a-binary-tree",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 870,
+    "upvotes": 220,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Lowest Common Ancestor of a Binary Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Lowest Common Ancestor of a Binary Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-62",
+    "title": "Palindrome Linked List",
+    "slug": "dsa-palindrome-linked-list",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 882,
+    "upvotes": 223,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Palindrome Linked List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Palindrome Linked List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-63",
+    "title": "Delete Node in a Linked List",
+    "slug": "dsa-delete-node-in-a-linked-list",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 894,
+    "upvotes": 226,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Delete Node in a Linked List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Delete Node in a Linked List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-64",
+    "title": "Product of Array Except Self",
+    "slug": "dsa-product-of-array-except-self",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 906,
+    "upvotes": 229,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Product of Array Except Self**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Product of Array Except Self** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-65",
+    "title": "Valid Anagram",
+    "slug": "dsa-valid-anagram",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 918,
+    "upvotes": 232,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Valid Anagram**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Valid Anagram** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-66",
+    "title": "Meeting Rooms",
+    "slug": "dsa-meeting-rooms",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 930,
+    "upvotes": 235,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Meeting Rooms**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Meeting Rooms** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-67",
+    "title": "Meeting Rooms II",
+    "slug": "dsa-meeting-rooms-ii",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 942,
+    "upvotes": 238,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Meeting Rooms II**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Meeting Rooms II** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-68",
+    "title": "Graph Valid Tree",
+    "slug": "dsa-graph-valid-tree",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 954,
+    "upvotes": 241,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Graph Valid Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Graph Valid Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-69",
+    "title": "Alien Dictionary",
+    "slug": "dsa-alien-dictionary",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 966,
+    "upvotes": 244,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Alien Dictionary**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Alien Dictionary** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-70",
+    "title": "Integer to English Words",
+    "slug": "dsa-integer-to-english-words",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 978,
+    "upvotes": 247,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Integer to English Words**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Integer to English Words** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-71",
+    "title": "First Bad Version",
+    "slug": "dsa-first-bad-version",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 990,
+    "upvotes": 250,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **First Bad Version**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **First Bad Version** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-72",
+    "title": "Perfect Squares",
+    "slug": "dsa-perfect-squares",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1002,
+    "upvotes": 253,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Perfect Squares**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Perfect Squares** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-73",
+    "title": "Find the Duplicate Number",
+    "slug": "dsa-find-the-duplicate-number",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1014,
+    "upvotes": 256,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Find the Duplicate Number**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Find the Duplicate Number** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-74",
+    "title": "Game of Life",
+    "slug": "dsa-game-of-life",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1026,
+    "upvotes": 259,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Game of Life**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Game of Life** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-75",
+    "title": "Longest Increasing Subsequence",
+    "slug": "dsa-longest-increasing-subsequence",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1038,
+    "upvotes": 262,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Longest Increasing Subsequence**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Longest Increasing Subsequence** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-76",
+    "title": "Remove Duplicate Letters",
+    "slug": "dsa-remove-duplicate-letters",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1050,
+    "upvotes": 265,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Remove Duplicate Letters**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Remove Duplicate Letters** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-77",
+    "title": "Count of Smaller Numbers After Self",
+    "slug": "dsa-count-of-smaller-numbers-after-self",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1062,
+    "upvotes": 268,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Count of Smaller Numbers After Self**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Count of Smaller Numbers After Self** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-78",
+    "title": "Range Sum Query 2D - Mutable",
+    "slug": "dsa-range-sum-query-2d-mutable",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1074,
+    "upvotes": 271,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Range Sum Query 2D - Mutable**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Range Sum Query 2D - Mutable** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-79",
+    "title": "Create Maximum Number",
+    "slug": "dsa-create-maximum-number",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1086,
+    "upvotes": 274,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Create Maximum Number**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Create Maximum Number** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-80",
+    "title": "Coin Change",
+    "slug": "dsa-coin-change",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1098,
+    "upvotes": 277,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Coin Change**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Coin Change** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-81",
+    "title": "Wiggle Sort II",
+    "slug": "dsa-wiggle-sort-ii",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1110,
+    "upvotes": 280,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Wiggle Sort II**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Wiggle Sort II** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-82",
+    "title": "Power of Three",
+    "slug": "dsa-power-of-three",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1122,
+    "upvotes": 283,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Power of Three**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Power of Three** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-83",
+    "title": "Odd Even Linked List",
+    "slug": "dsa-odd-even-linked-list",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1134,
+    "upvotes": 286,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Odd Even Linked List**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Odd Even Linked List** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-84",
+    "title": "Verify Preorder Sequence in Binary Tree",
+    "slug": "dsa-verify-preorder-sequence-in-binary-tree",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1146,
+    "upvotes": 289,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Verify Preorder Sequence in Binary Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Verify Preorder Sequence in Binary Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-85",
+    "title": "Top K Frequent Elements",
+    "slug": "dsa-top-k-frequent-elements",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1158,
+    "upvotes": 292,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Top K Frequent Elements**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Top K Frequent Elements** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-86",
+    "title": "Design Tic-Tac-Toe",
+    "slug": "dsa-design-tic-tac-toe",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1170,
+    "upvotes": 295,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Design Tic-Tac-Toe**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Design Tic-Tac-Toe** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-87",
+    "title": "Median of Two Sorted Arrays",
+    "slug": "dsa-median-of-two-sorted-arrays",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1182,
+    "upvotes": 298,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Median of Two Sorted Arrays**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Median of Two Sorted Arrays** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-88",
+    "title": "Longest Palindromic Substring",
+    "slug": "dsa-longest-palindromic-substring",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1194,
+    "upvotes": 301,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Longest Palindromic Substring**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Longest Palindromic Substring** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-89",
+    "title": "Regular Expression Matching",
+    "slug": "dsa-regular-expression-matching",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1206,
+    "upvotes": 304,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Regular Expression Matching**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Regular Expression Matching** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-90",
+    "title": "Wildcard Matching",
+    "slug": "dsa-wildcard-matching",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1218,
+    "upvotes": 307,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Wildcard Matching**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Wildcard Matching** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-91",
+    "title": "Edit Distance",
+    "slug": "dsa-edit-distance",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1230,
+    "upvotes": 310,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Edit Distance**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Edit Distance** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-92",
+    "title": "Trapping Rain Water",
+    "slug": "dsa-trapping-rain-water",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1242,
+    "upvotes": 313,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Trapping Rain Water**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Trapping Rain Water** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-93",
+    "title": "First Missing Positive",
+    "slug": "dsa-first-missing-positive",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1254,
+    "upvotes": 316,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **First Missing Positive**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **First Missing Positive** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-94",
+    "title": "N-Queens",
+    "slug": "dsa-n-queens",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1266,
+    "upvotes": 319,
+    "downvotes": 2,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **N-Queens**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **N-Queens** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-95",
+    "title": "Binary Tree Maximum Path Sum",
+    "slug": "dsa-binary-tree-maximum-path-sum",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1278,
+    "upvotes": 322,
+    "downvotes": 3,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Binary Tree Maximum Path Sum**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Binary Tree Maximum Path Sum** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-96",
+    "title": "Merge Sort",
+    "slug": "dsa-merge-sort",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1290,
+    "upvotes": 325,
+    "downvotes": 4,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Merge Sort**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Merge Sort** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-97",
+    "title": "Quick Sort",
+    "slug": "dsa-quick-sort",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1302,
+    "upvotes": 328,
+    "downvotes": 5,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Quick Sort**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Quick Sort** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-98",
+    "title": "Kruskal's Minimum Spanning Tree",
+    "slug": "dsa-kruskal-s-minimum-spanning-tree",
+    "difficulty": "Medium",
+    "category": "Data Structures & Algorithms",
+    "points": 100,
+    "solvedCount": 1314,
+    "upvotes": 331,
+    "downvotes": 6,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Kruskal's Minimum Spanning Tree**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Kruskal's Minimum Spanning Tree** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-99",
+    "title": "Dijkstra's Shortest Path",
+    "slug": "dsa-dijkstra-s-shortest-path",
+    "difficulty": "Hard",
+    "category": "Data Structures & Algorithms",
+    "points": 150,
+    "solvedCount": 1326,
+    "upvotes": 334,
+    "downvotes": 0,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Dijkstra's Shortest Path**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Dijkstra's Shortest Path** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  },
+  {
+    "id": "prob-dsa-100",
+    "title": "Bellman-Ford Algorithm",
+    "slug": "dsa-bellman-ford-algorithm",
+    "difficulty": "Easy",
+    "category": "Data Structures & Algorithms",
+    "points": 50,
+    "solvedCount": 1338,
+    "upvotes": 337,
+    "downvotes": 1,
+    "userStatus": "unattempted",
+    "description": "Solve the classic programming challenge **Bellman-Ford Algorithm**.\n\n### Problem Description\nWrite a highly optimized algorithm to solve **Bellman-Ford Algorithm** efficiently under strict time complexity constraints.\n\nFor details, check standard reference implementations and test cases.",
+    "starterCode": "function solveChallenge(input) {\n  // Write your code here\n  return input;\n}",
+    "solutionCode": "function solveChallenge(input) {\n  // Optimal solution\n  return input;\n}",
+    "testCases": [
+      {
+        "id": "tc1",
+        "input": "null",
+        "expectedOutput": "null"
+      }
+    ]
+  }
+]

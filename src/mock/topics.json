@@ -1,0 +1,1795 @@
+[
+  {
+    "id": "topic-nextjs",
+    "title": "Next.js 14 App Router Deep Dive",
+    "slug": "nextjs-app-router",
+    "description": "Master server components, routing, server actions, and advanced rendering patterns in modern Next.js.",
+    "estimatedTime": "12 hours",
+    "difficulty": "Intermediate",
+    "category": "Frontend",
+    "icon": "TbBrandNextjs",
+    "progress": 65,
+    "modules": [
+      {
+        "moduleId": "mod-next-1",
+        "title": "Introduction to App Router & Routing",
+        "description": "Understand file-system routing, nested layouts, and dynamic segments.",
+        "status": "completed",
+        "duration": "45 mins"
+      },
+      {
+        "moduleId": "mod-next-2",
+        "title": "React Server Components (RSC) vs Client Components",
+        "description": "Deep dive into when to use Server vs Client components, and the network boundary.",
+        "status": "completed",
+        "duration": "1 hour"
+      },
+      {
+        "moduleId": "mod-next-3",
+        "title": "Data Fetching & Caching Strategies",
+        "description": "Learn static rendering, dynamic rendering, revalidation, and request deduping.",
+        "status": "in-progress",
+        "duration": "1.5 hours"
+      },
+      {
+        "moduleId": "mod-next-4",
+        "title": "Server Actions & Mutations",
+        "description": "Implement form submissions, database updates, and optimistic UI without API endpoints.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-next-5",
+        "title": "Advanced Middleware & Authentication",
+        "description": "Secure your Next.js routes, handle session tokens, and implement role-based access control.",
+        "status": "locked",
+        "duration": "1.5 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Next.js 14 App Router - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tfr"
+      },
+      {
+        "title": "Lecture 2: Next.js 14 App Router - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tfr"
+      },
+      {
+        "title": "Lecture 3: Next.js 14 App Router - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tfr"
+      },
+      {
+        "title": "Lecture 4: Next.js 14 App Router - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tfr"
+      },
+      {
+        "title": "Lecture 5: Next.js 14 App Router - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tfr"
+      },
+      {
+        "title": "Lecture 6: Next.js 14 App Router - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tfr"
+      },
+      {
+        "title": "Lecture 7: Next.js 14 App Router - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tfr"
+      },
+      {
+        "title": "Lecture 8: Next.js 14 App Router - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tfr"
+      },
+      {
+        "title": "Lecture 9: Next.js 14 App Router - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tfr"
+      },
+      {
+        "title": "Lecture 10: Next.js 14 App Router - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tfr"
+      },
+      {
+        "title": "Lecture 11: Next.js 14 App Router - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tfr"
+      },
+      {
+        "title": "Lecture 12: Next.js 14 App Router - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tfr"
+      },
+      {
+        "title": "Lecture 13: Next.js 14 App Router - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tfr"
+      },
+      {
+        "title": "Lecture 14: Next.js 14 App Router - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tfr"
+      },
+      {
+        "title": "Lecture 15: Next.js 14 App Router - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tfr"
+      },
+      {
+        "title": "Lecture 16: Next.js 14 App Router - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tfr"
+      },
+      {
+        "title": "Lecture 17: Next.js 14 App Router - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tfr"
+      },
+      {
+        "title": "Lecture 18: Next.js 14 App Router - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tfr"
+      },
+      {
+        "title": "Lecture 19: Next.js 14 App Router - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tfr"
+      },
+      {
+        "title": "Lecture 20: Next.js 14 App Router - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tfr"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Next.js Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-frontend"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Next.js Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-frontend"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Next.js Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-frontend"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Next.js Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-frontend"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Next.js Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-frontend"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Next.js Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-frontend"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Next.js Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-frontend"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Next.js Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-frontend"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Next.js Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-frontend"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Next.js Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-frontend"
+      }
+    ]
+  },
+  {
+    "id": "topic-react-motion",
+    "title": "Production-Ready Framer Motion",
+    "slug": "framer-motion",
+    "description": "Create stunning, fluid, and accessible web animations and micro-interactions that wow users.",
+    "estimatedTime": "6 hours",
+    "difficulty": "Advanced",
+    "category": "Frontend",
+    "icon": "FiFramer",
+    "progress": 20,
+    "modules": [
+      {
+        "moduleId": "mod-motion-1",
+        "title": "Principles of Motion & Animation Options",
+        "description": "CSS vs JS animations, spring physics, and baseline parameters.",
+        "status": "completed",
+        "duration": "30 mins"
+      },
+      {
+        "moduleId": "mod-motion-2",
+        "title": "AnimatePresence & Page Transitions",
+        "description": "Handle unmounting animations, exit transitions, and seamless page routing fade+slide.",
+        "status": "in-progress",
+        "duration": "1 hour"
+      },
+      {
+        "moduleId": "mod-motion-3",
+        "title": "Gestures, Hover, and Tap Micro-interactions",
+        "description": "Elevate form elements, buttons, and menus with interactive reactive states.",
+        "status": "locked",
+        "duration": "1.5 hours"
+      },
+      {
+        "moduleId": "mod-motion-4",
+        "title": "Scroll-Driven & Layout Animations",
+        "description": "Animate elements as they enter the viewport and utilize layoutId for morphing components.",
+        "status": "locked",
+        "duration": "2 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Production-Ready Framer Motion - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tfr"
+      },
+      {
+        "title": "Lecture 2: Production-Ready Framer Motion - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tfr"
+      },
+      {
+        "title": "Lecture 3: Production-Ready Framer Motion - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tfr"
+      },
+      {
+        "title": "Lecture 4: Production-Ready Framer Motion - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tfr"
+      },
+      {
+        "title": "Lecture 5: Production-Ready Framer Motion - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tfr"
+      },
+      {
+        "title": "Lecture 6: Production-Ready Framer Motion - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tfr"
+      },
+      {
+        "title": "Lecture 7: Production-Ready Framer Motion - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tfr"
+      },
+      {
+        "title": "Lecture 8: Production-Ready Framer Motion - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tfr"
+      },
+      {
+        "title": "Lecture 9: Production-Ready Framer Motion - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tfr"
+      },
+      {
+        "title": "Lecture 10: Production-Ready Framer Motion - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tfr"
+      },
+      {
+        "title": "Lecture 11: Production-Ready Framer Motion - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tfr"
+      },
+      {
+        "title": "Lecture 12: Production-Ready Framer Motion - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tfr"
+      },
+      {
+        "title": "Lecture 13: Production-Ready Framer Motion - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tfr"
+      },
+      {
+        "title": "Lecture 14: Production-Ready Framer Motion - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tfr"
+      },
+      {
+        "title": "Lecture 15: Production-Ready Framer Motion - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tfr"
+      },
+      {
+        "title": "Lecture 16: Production-Ready Framer Motion - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tfr"
+      },
+      {
+        "title": "Lecture 17: Production-Ready Framer Motion - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tfr"
+      },
+      {
+        "title": "Lecture 18: Production-Ready Framer Motion - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tfr"
+      },
+      {
+        "title": "Lecture 19: Production-Ready Framer Motion - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tfr"
+      },
+      {
+        "title": "Lecture 20: Production-Ready Framer Motion - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tfr"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Production-Ready Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-frontend"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Production-Ready Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-frontend"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Production-Ready Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-frontend"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Production-Ready Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-frontend"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Production-Ready Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-frontend"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Production-Ready Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-frontend"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Production-Ready Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-frontend"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Production-Ready Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-frontend"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Production-Ready Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-frontend"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Production-Ready Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-frontend"
+      }
+    ]
+  },
+  {
+    "id": "topic-postgresql-nodes",
+    "title": "PostgreSQL & Database Design",
+    "slug": "postgresql-database-design",
+    "description": "Design secure, robust databases, manage relationships, and optimize queries with indexes and joins.",
+    "estimatedTime": "15 hours",
+    "difficulty": "Intermediate",
+    "category": "Backend",
+    "icon": "BiLogoPostgresql",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-pg-1",
+        "title": "Relational Modeling & Core Concepts",
+        "description": "Tables, keys, foreign key constraints, and entity relationship diagrams.",
+        "status": "locked",
+        "duration": "1 hour"
+      },
+      {
+        "moduleId": "mod-pg-2",
+        "title": "Complex Queries, Joins & Aggregations",
+        "description": "Write advanced SQL queries with nested joins, group by, and window functions.",
+        "status": "locked",
+        "duration": "2.5 hours"
+      },
+      {
+        "moduleId": "mod-pg-3",
+        "title": "Indexing & Performance Tuning",
+        "description": "Understand EXPLAIN plans, B-Tree indexes, and table partition optimizations.",
+        "status": "locked",
+        "duration": "2 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: PostgreSQL & Database Design - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tba"
+      },
+      {
+        "title": "Lecture 2: PostgreSQL & Database Design - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tba"
+      },
+      {
+        "title": "Lecture 3: PostgreSQL & Database Design - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tba"
+      },
+      {
+        "title": "Lecture 4: PostgreSQL & Database Design - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tba"
+      },
+      {
+        "title": "Lecture 5: PostgreSQL & Database Design - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tba"
+      },
+      {
+        "title": "Lecture 6: PostgreSQL & Database Design - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tba"
+      },
+      {
+        "title": "Lecture 7: PostgreSQL & Database Design - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tba"
+      },
+      {
+        "title": "Lecture 8: PostgreSQL & Database Design - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tba"
+      },
+      {
+        "title": "Lecture 9: PostgreSQL & Database Design - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tba"
+      },
+      {
+        "title": "Lecture 10: PostgreSQL & Database Design - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tba"
+      },
+      {
+        "title": "Lecture 11: PostgreSQL & Database Design - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tba"
+      },
+      {
+        "title": "Lecture 12: PostgreSQL & Database Design - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tba"
+      },
+      {
+        "title": "Lecture 13: PostgreSQL & Database Design - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tba"
+      },
+      {
+        "title": "Lecture 14: PostgreSQL & Database Design - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tba"
+      },
+      {
+        "title": "Lecture 15: PostgreSQL & Database Design - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tba"
+      },
+      {
+        "title": "Lecture 16: PostgreSQL & Database Design - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tba"
+      },
+      {
+        "title": "Lecture 17: PostgreSQL & Database Design - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tba"
+      },
+      {
+        "title": "Lecture 18: PostgreSQL & Database Design - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tba"
+      },
+      {
+        "title": "Lecture 19: PostgreSQL & Database Design - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tba"
+      },
+      {
+        "title": "Lecture 20: PostgreSQL & Database Design - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tba"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of PostgreSQL Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-backend"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of PostgreSQL Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-backend"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of PostgreSQL Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-backend"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of PostgreSQL Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-backend"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of PostgreSQL Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-backend"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of PostgreSQL Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-backend"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of PostgreSQL Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-backend"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of PostgreSQL Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-backend"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of PostgreSQL Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-backend"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of PostgreSQL Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-backend"
+      }
+    ]
+  },
+  {
+    "id": "topic-gemini-ai",
+    "title": "Integrating Gemini API & LLM Agents",
+    "slug": "gemini-api-agents",
+    "description": "Leverage Google's Gemini models for text generation, multimodal inputs, structured JSON output, and agents.",
+    "estimatedTime": "10 hours",
+    "difficulty": "Advanced",
+    "category": "AI",
+    "icon": "SiGooglebard",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-gemini-1",
+        "title": "Gemini API Basics & Prompt Engineering",
+        "description": "Get an API key, manage system instructions, temperature, and basic chat context.",
+        "status": "locked",
+        "duration": "1 hour"
+      },
+      {
+        "moduleId": "mod-gemini-2",
+        "title": "Multimodal Input & Image Analysis",
+        "description": "Feed images, audio, or PDFs to Gemini and extract structured information.",
+        "status": "locked",
+        "duration": "1.5 hours"
+      },
+      {
+        "moduleId": "mod-gemini-3",
+        "title": "Structured JSON & Tool Calling",
+        "description": "Enforce strict JSON schemas and register local JS functions for Gemini to invoke autonomously.",
+        "status": "locked",
+        "duration": "2 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Integrating Gemini API & LLM Agents - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tai"
+      },
+      {
+        "title": "Lecture 2: Integrating Gemini API & LLM Agents - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tai"
+      },
+      {
+        "title": "Lecture 3: Integrating Gemini API & LLM Agents - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tai"
+      },
+      {
+        "title": "Lecture 4: Integrating Gemini API & LLM Agents - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tai"
+      },
+      {
+        "title": "Lecture 5: Integrating Gemini API & LLM Agents - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tai"
+      },
+      {
+        "title": "Lecture 6: Integrating Gemini API & LLM Agents - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tai"
+      },
+      {
+        "title": "Lecture 7: Integrating Gemini API & LLM Agents - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tai"
+      },
+      {
+        "title": "Lecture 8: Integrating Gemini API & LLM Agents - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tai"
+      },
+      {
+        "title": "Lecture 9: Integrating Gemini API & LLM Agents - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tai"
+      },
+      {
+        "title": "Lecture 10: Integrating Gemini API & LLM Agents - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tai"
+      },
+      {
+        "title": "Lecture 11: Integrating Gemini API & LLM Agents - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tai"
+      },
+      {
+        "title": "Lecture 12: Integrating Gemini API & LLM Agents - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tai"
+      },
+      {
+        "title": "Lecture 13: Integrating Gemini API & LLM Agents - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tai"
+      },
+      {
+        "title": "Lecture 14: Integrating Gemini API & LLM Agents - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tai"
+      },
+      {
+        "title": "Lecture 15: Integrating Gemini API & LLM Agents - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tai"
+      },
+      {
+        "title": "Lecture 16: Integrating Gemini API & LLM Agents - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tai"
+      },
+      {
+        "title": "Lecture 17: Integrating Gemini API & LLM Agents - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tai"
+      },
+      {
+        "title": "Lecture 18: Integrating Gemini API & LLM Agents - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tai"
+      },
+      {
+        "title": "Lecture 19: Integrating Gemini API & LLM Agents - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tai"
+      },
+      {
+        "title": "Lecture 20: Integrating Gemini API & LLM Agents - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tai"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Integrating Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-ai"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Integrating Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-ai"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Integrating Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-ai"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Integrating Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-ai"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Integrating Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-ai"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Integrating Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-ai"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Integrating Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-ai"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Integrating Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-ai"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Integrating Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-ai"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Integrating Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-ai"
+      }
+    ]
+  },
+  {
+    "id": "topic-cpp",
+    "title": "C++ Programming Essentials",
+    "slug": "cpp-programming-foundations",
+    "description": "Learn C++ language basics, pointers, references, memory management, OOP principles, and STL containers.",
+    "estimatedTime": "8 hours",
+    "difficulty": "Easy",
+    "category": "Languages",
+    "icon": "Code",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-cpp-1",
+        "title": "C++ Syntax, Variables & Operators",
+        "description": "Introduction to compiled code, standard inputs/outputs, variables, and operators.",
+        "status": "locked",
+        "duration": "1 hour"
+      },
+      {
+        "moduleId": "mod-cpp-2",
+        "title": "Pointers, References & Memory Management",
+        "description": "Understand pointers dereferencing, heap vs stack, and dynamic allocation with new/delete.",
+        "status": "locked",
+        "duration": "2.5 hours"
+      },
+      {
+        "moduleId": "mod-cpp-3",
+        "title": "Object-Oriented Programming (OOP) in C++",
+        "description": "Implement classes, inheritance, polymorphism, and access specifiers.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-cpp-4",
+        "title": "Standard Template Library (STL)",
+        "description": "Master vectors, maps, sets, queues, and custom comparators.",
+        "status": "locked",
+        "duration": "2.5 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: C++ Programming - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tla"
+      },
+      {
+        "title": "Lecture 2: C++ Programming - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tla"
+      },
+      {
+        "title": "Lecture 3: C++ Programming - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tla"
+      },
+      {
+        "title": "Lecture 4: C++ Programming - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tla"
+      },
+      {
+        "title": "Lecture 5: C++ Programming - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tla"
+      },
+      {
+        "title": "Lecture 6: C++ Programming - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tla"
+      },
+      {
+        "title": "Lecture 7: C++ Programming - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tla"
+      },
+      {
+        "title": "Lecture 8: C++ Programming - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tla"
+      },
+      {
+        "title": "Lecture 9: C++ Programming - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tla"
+      },
+      {
+        "title": "Lecture 10: C++ Programming - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tla"
+      },
+      {
+        "title": "Lecture 11: C++ Programming - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tla"
+      },
+      {
+        "title": "Lecture 12: C++ Programming - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tla"
+      },
+      {
+        "title": "Lecture 13: C++ Programming - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tla"
+      },
+      {
+        "title": "Lecture 14: C++ Programming - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tla"
+      },
+      {
+        "title": "Lecture 15: C++ Programming - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tla"
+      },
+      {
+        "title": "Lecture 16: C++ Programming - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tla"
+      },
+      {
+        "title": "Lecture 17: C++ Programming - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tla"
+      },
+      {
+        "title": "Lecture 18: C++ Programming - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tla"
+      },
+      {
+        "title": "Lecture 19: C++ Programming - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tla"
+      },
+      {
+        "title": "Lecture 20: C++ Programming - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tla"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of C++ Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-languages"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of C++ Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-languages"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of C++ Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-languages"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of C++ Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-languages"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of C++ Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-languages"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of C++ Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-languages"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of C++ Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-languages"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of C++ Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-languages"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of C++ Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-languages"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of C++ Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-languages"
+      }
+    ]
+  },
+  {
+    "id": "topic-java",
+    "title": "Core Java Deep Dive",
+    "slug": "java-core-mastery",
+    "description": "Master Java OOP concepts, Multithreading, Exception Handling, Collections Framework, and JVM internals.",
+    "estimatedTime": "10 hours",
+    "difficulty": "Intermediate",
+    "category": "Languages",
+    "icon": "Coffee",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-java-1",
+        "title": "Java Classes, Objects & Inheritance",
+        "description": "Understand super, final keywords, dynamic method dispatch, and constructor chaining.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-java-2",
+        "title": "Java Exception Handling & File I/O",
+        "description": "Learn try-catch blocks, custom exceptions, try-with-resources, and buffers.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-java-3",
+        "title": "Collections Framework Deep Dive",
+        "description": "Deep dive into ArrayList, HashMap, LinkedList, HashSet, and Comparables.",
+        "status": "locked",
+        "duration": "3 hours"
+      },
+      {
+        "moduleId": "mod-java-4",
+        "title": "Java Multithreading & Concurrency",
+        "description": "Master thread life-cycles, synchronization blocks, volatile parameters, and threadpools.",
+        "status": "locked",
+        "duration": "3 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Core Java - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tla"
+      },
+      {
+        "title": "Lecture 2: Core Java - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tla"
+      },
+      {
+        "title": "Lecture 3: Core Java - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tla"
+      },
+      {
+        "title": "Lecture 4: Core Java - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tla"
+      },
+      {
+        "title": "Lecture 5: Core Java - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tla"
+      },
+      {
+        "title": "Lecture 6: Core Java - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tla"
+      },
+      {
+        "title": "Lecture 7: Core Java - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tla"
+      },
+      {
+        "title": "Lecture 8: Core Java - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tla"
+      },
+      {
+        "title": "Lecture 9: Core Java - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tla"
+      },
+      {
+        "title": "Lecture 10: Core Java - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tla"
+      },
+      {
+        "title": "Lecture 11: Core Java - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tla"
+      },
+      {
+        "title": "Lecture 12: Core Java - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tla"
+      },
+      {
+        "title": "Lecture 13: Core Java - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tla"
+      },
+      {
+        "title": "Lecture 14: Core Java - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tla"
+      },
+      {
+        "title": "Lecture 15: Core Java - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tla"
+      },
+      {
+        "title": "Lecture 16: Core Java - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tla"
+      },
+      {
+        "title": "Lecture 17: Core Java - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tla"
+      },
+      {
+        "title": "Lecture 18: Core Java - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tla"
+      },
+      {
+        "title": "Lecture 19: Core Java - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tla"
+      },
+      {
+        "title": "Lecture 20: Core Java - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tla"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Core Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-languages"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Core Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-languages"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Core Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-languages"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Core Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-languages"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Core Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-languages"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Core Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-languages"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Core Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-languages"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Core Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-languages"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Core Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-languages"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Core Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-languages"
+      }
+    ]
+  },
+  {
+    "id": "topic-python",
+    "title": "Python Scripting & DSA Core",
+    "slug": "python-dsa-mastery",
+    "description": "Learn Python syntax, dynamic typing, list comprehensions, built-in data structures, and algorithms.",
+    "estimatedTime": "7 hours",
+    "difficulty": "Easy",
+    "category": "Languages",
+    "icon": "Terminal",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-py-1",
+        "title": "Python Basics & Dynamic Typing",
+        "description": "Understanding basic syntax, dynamic scoping, functions, and dynamic variables.",
+        "status": "locked",
+        "duration": "1.5 hours"
+      },
+      {
+        "moduleId": "mod-py-2",
+        "title": "List Comprehensions & Advanced Dictionaries",
+        "description": "Write advanced list comprehensions, dictionary merges, and lambda functions.",
+        "status": "locked",
+        "duration": "1.5 hours"
+      },
+      {
+        "moduleId": "mod-py-3",
+        "title": "Built-in Data Structures & Complexity",
+        "description": "Inspect lists, tuples, dictionaries, and sets along with their CRUD O(1) vs O(N) operations.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-py-4",
+        "title": "Custom Classes & OOP in Python",
+        "description": "Understand classes, dunder methods, inheritance, and encapsulation.",
+        "status": "locked",
+        "duration": "2 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Python Scripting & DSA - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tla"
+      },
+      {
+        "title": "Lecture 2: Python Scripting & DSA - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tla"
+      },
+      {
+        "title": "Lecture 3: Python Scripting & DSA - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tla"
+      },
+      {
+        "title": "Lecture 4: Python Scripting & DSA - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tla"
+      },
+      {
+        "title": "Lecture 5: Python Scripting & DSA - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tla"
+      },
+      {
+        "title": "Lecture 6: Python Scripting & DSA - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tla"
+      },
+      {
+        "title": "Lecture 7: Python Scripting & DSA - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tla"
+      },
+      {
+        "title": "Lecture 8: Python Scripting & DSA - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tla"
+      },
+      {
+        "title": "Lecture 9: Python Scripting & DSA - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tla"
+      },
+      {
+        "title": "Lecture 10: Python Scripting & DSA - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tla"
+      },
+      {
+        "title": "Lecture 11: Python Scripting & DSA - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tla"
+      },
+      {
+        "title": "Lecture 12: Python Scripting & DSA - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tla"
+      },
+      {
+        "title": "Lecture 13: Python Scripting & DSA - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tla"
+      },
+      {
+        "title": "Lecture 14: Python Scripting & DSA - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tla"
+      },
+      {
+        "title": "Lecture 15: Python Scripting & DSA - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tla"
+      },
+      {
+        "title": "Lecture 16: Python Scripting & DSA - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tla"
+      },
+      {
+        "title": "Lecture 17: Python Scripting & DSA - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tla"
+      },
+      {
+        "title": "Lecture 18: Python Scripting & DSA - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tla"
+      },
+      {
+        "title": "Lecture 19: Python Scripting & DSA - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tla"
+      },
+      {
+        "title": "Lecture 20: Python Scripting & DSA - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tla"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Python Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-languages"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Python Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-languages"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Python Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-languages"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Python Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-languages"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Python Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-languages"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Python Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-languages"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Python Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-languages"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Python Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-languages"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Python Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-languages"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Python Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-languages"
+      }
+    ]
+  },
+  {
+    "id": "topic-js",
+    "title": "Modern JavaScript & Advanced ES6+",
+    "slug": "modern-javascript-advanced",
+    "description": "Master JS closures, prototypes, asynchronous event loop, promises, async/await, and ES6+ standards.",
+    "estimatedTime": "9 hours",
+    "difficulty": "Intermediate",
+    "category": "Languages",
+    "icon": "Flame",
+    "progress": 0,
+    "modules": [
+      {
+        "moduleId": "mod-js-1",
+        "title": "Closures, Lexical Scope & Context",
+        "description": "Understand dynamic scope, execution context, closures, and the 'this' keyword.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-js-2",
+        "title": "Prototypal Inheritance & JavaScript Objects",
+        "description": "Deep dive into __proto__, prototype chaining, class syntactic sugar, and object configurations.",
+        "status": "locked",
+        "duration": "2 hours"
+      },
+      {
+        "moduleId": "mod-js-3",
+        "title": "Asynchronous JS: Event Loop & Promises",
+        "description": "Master macro-tasks vs micro-tasks, callstack execution, Promises, and async/await wrappers.",
+        "status": "locked",
+        "duration": "3 hours"
+      },
+      {
+        "moduleId": "mod-js-4",
+        "title": "Modern ES6+ Features & Modules",
+        "description": "Learn array/object destructuring, rest/spread operators, and ES modules imports/exports.",
+        "status": "locked",
+        "duration": "2 hours"
+      }
+    ],
+    "videos": [
+      {
+        "title": "Lecture 1: Modern JavaScript & Advanced ES6+ - Part 1",
+        "channel": "Net Ninja",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa1tla"
+      },
+      {
+        "title": "Lecture 2: Modern JavaScript & Advanced ES6+ - Part 2",
+        "channel": "Programming with Mosh",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa2tla"
+      },
+      {
+        "title": "Lecture 3: Modern JavaScript & Advanced ES6+ - Part 3",
+        "channel": "Dave Gray",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa3tla"
+      },
+      {
+        "title": "Lecture 4: Modern JavaScript & Advanced ES6+ - Part 4",
+        "channel": "Telusko",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa4tla"
+      },
+      {
+        "title": "Lecture 5: Modern JavaScript & Advanced ES6+ - Part 5",
+        "channel": "Hussein Nasser",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa5tla"
+      },
+      {
+        "title": "Lecture 6: Modern JavaScript & Advanced ES6+ - Part 6",
+        "channel": "NeetCode",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa6tla"
+      },
+      {
+        "title": "Lecture 7: Modern JavaScript & Advanced ES6+ - Part 7",
+        "channel": "ThinkEra Academy",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa7tla"
+      },
+      {
+        "title": "Lecture 8: Modern JavaScript & Advanced ES6+ - Part 8",
+        "channel": "freeCodeCamp.org",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa8tla"
+      },
+      {
+        "title": "Lecture 9: Modern JavaScript & Advanced ES6+ - Part 9",
+        "channel": "Net Ninja",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa9tla"
+      },
+      {
+        "title": "Lecture 10: Modern JavaScript & Advanced ES6+ - Part 10",
+        "channel": "Programming with Mosh",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa10tla"
+      },
+      {
+        "title": "Lecture 11: Modern JavaScript & Advanced ES6+ - Part 11",
+        "channel": "Dave Gray",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa11tla"
+      },
+      {
+        "title": "Lecture 12: Modern JavaScript & Advanced ES6+ - Part 12",
+        "channel": "Telusko",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa12tla"
+      },
+      {
+        "title": "Lecture 13: Modern JavaScript & Advanced ES6+ - Part 13",
+        "channel": "Hussein Nasser",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa13tla"
+      },
+      {
+        "title": "Lecture 14: Modern JavaScript & Advanced ES6+ - Part 14",
+        "channel": "NeetCode",
+        "duration": "12 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa14tla"
+      },
+      {
+        "title": "Lecture 15: Modern JavaScript & Advanced ES6+ - Part 15",
+        "channel": "ThinkEra Academy",
+        "duration": "18 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa15tla"
+      },
+      {
+        "title": "Lecture 16: Modern JavaScript & Advanced ES6+ - Part 16",
+        "channel": "freeCodeCamp.org",
+        "duration": "24 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa16tla"
+      },
+      {
+        "title": "Lecture 17: Modern JavaScript & Advanced ES6+ - Part 17",
+        "channel": "Net Ninja",
+        "duration": "32 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa17tla"
+      },
+      {
+        "title": "Lecture 18: Modern JavaScript & Advanced ES6+ - Part 18",
+        "channel": "Programming with Mosh",
+        "duration": "45 mins",
+        "url": "https://www.youtube.com/watch?v=mockdsa18tla"
+      },
+      {
+        "title": "Lecture 19: Modern JavaScript & Advanced ES6+ - Part 19",
+        "channel": "Dave Gray",
+        "duration": "1h 15m",
+        "url": "https://www.youtube.com/watch?v=mockdsa19tla"
+      },
+      {
+        "title": "Lecture 20: Modern JavaScript & Advanced ES6+ - Part 20",
+        "channel": "Telusko",
+        "duration": "1h 40m",
+        "url": "https://www.youtube.com/watch?v=mockdsa20tla"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Deep Dive Article 1: Comprehensive Architecture of Modern Models",
+        "source": "GeeksforGeeks",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-1-languages"
+      },
+      {
+        "title": "Deep Dive Article 2: Comprehensive Architecture of Modern Models",
+        "source": "Baeldung CS",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-2-languages"
+      },
+      {
+        "title": "Deep Dive Article 3: Comprehensive Architecture of Modern Models",
+        "source": "Real Python",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-3-languages"
+      },
+      {
+        "title": "Deep Dive Article 4: Comprehensive Architecture of Modern Models",
+        "source": "Vercel Insights",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-4-languages"
+      },
+      {
+        "title": "Deep Dive Article 5: Comprehensive Architecture of Modern Models",
+        "source": "CSS-Tricks",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-5-languages"
+      },
+      {
+        "title": "Deep Dive Article 6: Comprehensive Architecture of Modern Models",
+        "source": "Medium Tech",
+        "readTime": "7 mins",
+        "url": "https://thinkera.io/blog/deep-dive-6-languages"
+      },
+      {
+        "title": "Deep Dive Article 7: Comprehensive Architecture of Modern Models",
+        "source": "LogRocket",
+        "readTime": "9 mins",
+        "url": "https://thinkera.io/blog/deep-dive-7-languages"
+      },
+      {
+        "title": "Deep Dive Article 8: Comprehensive Architecture of Modern Models",
+        "source": "MDN Web Docs",
+        "readTime": "12 mins",
+        "url": "https://thinkera.io/blog/deep-dive-8-languages"
+      },
+      {
+        "title": "Deep Dive Article 9: Comprehensive Architecture of Modern Models",
+        "source": "GeeksforGeeks",
+        "readTime": "15 mins",
+        "url": "https://thinkera.io/blog/deep-dive-9-languages"
+      },
+      {
+        "title": "Deep Dive Article 10: Comprehensive Architecture of Modern Models",
+        "source": "Baeldung CS",
+        "readTime": "5 mins",
+        "url": "https://thinkera.io/blog/deep-dive-10-languages"
+      }
+    ]
+  }
+]

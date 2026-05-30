@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+  /* Design System Colors */
+  --color-white: #FDFBF7; /* Soothing warm pastel cream instead of stark white */
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-dark: #1E3A5F;
+  --color-dark-hover: #172D4A;
+  
+  --color-text-main: #2D3748; /* Soft charcoal grey-800 for relaxed reading */
+  --color-muted-main: #718096; /* Soft blue-grey */
+  --color-bg-main: #F3EEE3; /* Premium warm book-like sepia canvas background */
+  
+  --color-success-main: #065F46;
+  --color-success-bg: #ECFDF5;
+  
+  --color-error-main: #991B1B;
+  --color-error-bg: #FEF2F2;
+  
+  --color-warning-main: #92400E;
+  --color-warning-bg: #FFFBEB;
+  
+  --color-border-main: #E2E8F0;
+
+  /* Custom Transitions & Shadow Modifications */
+  --shadow-sm: 0 1px 2px 0 rgba(30, 58, 95, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(30, 58, 95, 0.08), 0 4px 6px -4px rgba(30, 58, 95, 0.08);
+  --shadow-lg: 0 20px 25px -5px rgba(30, 58, 95, 0.1), 0 8px 10px -6px rgba(30, 58, 95, 0.1);
+  
+  --radius-xl: 12px;
+  --radius-lg: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Custom Base Layer Adjustments */
+@layer base {
+  html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark);
+    font-weight: 700;
+  }
+
+  /* Custom Selection styling for premium touch */
+  ::selection {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: var(--color-primary);
+  }
+
+  /* Custom minimalist scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(30, 58, 95, 0.1);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(30, 58, 95, 0.25);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Premium Animations helper classes */
+.glassmorphism {
+  background: rgba(253, 251, 247, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+header {
+  transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

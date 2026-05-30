@@ -1,0 +1,97 @@
+[
+  {
+    "id": "thread-1",
+    "title": "Why should I use React Server Components (RSC) instead of simple useEffect fetching?",
+    "slug": "rsc-vs-useeffect",
+    "category": "Next.js & React",
+    "author": {
+      "name": "Sarah Chen",
+      "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Sarah",
+      "role": "student",
+      "badge": "React Specialist"
+    },
+    "createdAt": "2026-05-28T10:14:00Z",
+    "upvotes": 42,
+    "hasUpvoted": false,
+    "repliesCount": 3,
+    "tags": ["React", "NextJS", "Data Fetching"],
+    "content": "I'm building a dashboard and originally fetched all my data using a standard client-side `useEffect` and an API call. I'm migrating to Next.js App Router and I keep hearing that RSC is the future. Can someone explain the tangible performance benefits of fetching on the server versus client side?",
+    "replies": [
+      {
+        "id": "reply-1-1",
+        "author": {
+          "name": "Alex Mercer",
+          "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Alex",
+          "role": "admin",
+          "badge": "Staff Mentor"
+        },
+        "createdAt": "2026-05-28T11:05:00Z",
+        "upvotes": 15,
+        "content": "Great question Sarah! The main advantages of React Server Components (RSC) are:\n\n1. **Zero Client-side Bundle Size:** All libraries used to fetch/format data (like `marked` or date formatters) stay on the server. Your bundle is lighter.\n2. **Direct Backend Access:** You can query databases directly inside the component without having to write separate API endpoints.\n3. **SEO Friendly:** HTML is generated on the server and sent to the client instantly, which is excellent for search engines."
+      },
+      {
+        "id": "reply-1-2",
+        "author": {
+          "name": "David Miller",
+          "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=David",
+          "role": "student",
+          "badge": "Rising Star"
+        },
+        "createdAt": "2026-05-28T12:30:00Z",
+        "upvotes": 4,
+        "content": "Also, you avoid the 'waterfall fetching' problem. With standard React client-side fetching, components fetch sequentially as they render. With RSC, you can parallelize requests on the server close to your data source!"
+      }
+    ]
+  },
+  {
+    "id": "thread-2",
+    "title": "Tips on mastering Framer Motion spring configurations?",
+    "slug": "framer-motion-spring-tips",
+    "category": "Animations & UI",
+    "author": {
+      "name": "Emma Watson",
+      "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Emma",
+      "role": "student",
+      "badge": "Creative Developer"
+    },
+    "createdAt": "2026-05-29T08:45:00Z",
+    "upvotes": 28,
+    "hasUpvoted": true,
+    "repliesCount": 1,
+    "tags": ["Framer Motion", "Tailwind", "CSS"],
+    "content": "Every time I build animations with Framer Motion, using standard spring parameters feels either too floppy or too stiff. Are there standard configurations you guys use for general dashboard cards, popovers, and menu dropdowns?",
+    "replies": [
+      {
+        "id": "reply-2-1",
+        "author": {
+          "name": "Sophia Vance",
+          "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Sophia",
+          "role": "admin",
+          "badge": "UX Director"
+        },
+        "createdAt": "2026-05-29T09:12:00Z",
+        "upvotes": 12,
+        "content": "Hey Emma! For high-quality, professional micro-animations, less is more. Avoid default spring settings for general utility UI. Try these:\n\n* **Bouncy Popovers:** `type: 'spring', stiffness: 300, damping: 20`\n* **Smooth Sidebars/Sliders:** `type: 'spring', stiffness: 260, damping: 26` (No bounce, clean tracking)\n* **Hover Cards:** `type: 'spring', stiffness: 400, damping: 30` (Snappy and instant)"
+      }
+    ]
+  },
+  {
+    "id": "thread-3",
+    "title": "Best practices for writing secure server actions?",
+    "slug": "secure-server-actions",
+    "category": "Security & Backend",
+    "author": {
+      "name": "Marcus Aurelius",
+      "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Marcus",
+      "role": "student",
+      "badge": "Backend Dev"
+    },
+    "createdAt": "2026-05-30T04:15:00Z",
+    "upvotes": 19,
+    "hasUpvoted": false,
+    "repliesCount": 0,
+    "tags": ["NextJS", "Security", "Server Actions"],
+    "content": "I am setting up a form mutation using Server Actions in Next.js. What's the best way to handle user input validation and authentication checks? Do I need middleware or should everything happen in the action itself?",
+    "replies": []
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "user-student-1",
+    "email": "student@thinkera.io",
+    "name": "Rudra Dev",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Rudra",
+    "role": "student",
+    "streak": 14,
+    "level": 3,
+    "xp": 1840,
+    "badges": [
+      {
+        "id": "badge-1",
+        "name": "First Solve",
+        "icon": "🏆",
+        "description": "Completed first coding challenge."
+      },
+      {
+        "id": "badge-2",
+        "name": "2-Week Streak",
+        "icon": "🔥",
+        "description": "Logged in and completed activities 14 days in a row."
+      }
+    ],
+    "joinedAt": "2026-04-12T00:00:00Z",
+    "solvedCount": 12,
+    "activePlan": "Pro Learner",
+    "recentActivity": [
+      {
+        "activityId": "act-1",
+        "type": "solved",
+        "targetName": "Build a Next.js Dynamic Segment Router",
+        "timestamp": "2026-05-30T10:00:00Z",
+        "xpGained": 50
+      },
+      {
+        "activityId": "act-2",
+        "type": "read",
+        "targetName": "Introduction to App Router & Routing",
+        "timestamp": "2026-05-29T15:20:00Z",
+        "xpGained": 20
+      }
+    ]
+  },
+  {
+    "id": "user-admin-1",
+    "email": "admin@thinkera.io",
+    "name": "Prof. Charles Xavier",
+    "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Charles",
+    "role": "admin",
+    "streak": 120,
+    "level": 99,
+    "xp": 99999,
+    "badges": [
+      {
+        "id": "badge-admin-1",
+        "name": "Platform Creator",
+        "icon": "🧠",
+        "description": "Platform architect and main content creator."
+      }
+    ],
+    "joinedAt": "2026-01-01T00:00:00Z",
+    "solvedCount": 150,
+    "activePlan": "Enterprise Admin",
+    "recentActivity": []
+  }
+]

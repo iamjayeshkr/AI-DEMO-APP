@@ -1,0 +1,40 @@
+{
+  "studentSession": {
+    "sessionToken": "mox_session_student_token_abcdef123",
+    "isAuthenticated": true,
+    "user": {
+      "id": "user-student-1",
+      "email": "student@thinkera.io",
+      "name": "Rudra Dev",
+      "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Rudra",
+      "role": "student",
+      "streak": 14,
+      "level": 3,
+      "xp": 1840,
+      "activePlan": "Pro Learner"
+    },
+    "expiresAt": "2026-06-30T13:28:38Z"
+  },
+  "adminSession": {
+    "sessionToken": "mox_session_admin_token_xyz789012",
+    "isAuthenticated": true,
+    "user": {
+      "id": "user-admin-1",
+      "email": "admin@thinkera.io",
+      "name": "Prof. Charles Xavier",
+      "avatar": "https://api.dicebear.com/7.x/adventurer/svg?seed=Charles",
+      "role": "admin",
+      "streak": 120,
+      "level": 99,
+      "xp": 99999,
+      "activePlan": "Enterprise Admin"
+    },
+    "expiresAt": "2026-06-30T13:28:38Z"
+  },
+  "guestSession": {
+    "sessionToken": null,
+    "isAuthenticated": false,
+    "user": null,
+    "expiresAt": null
+  }
+}
